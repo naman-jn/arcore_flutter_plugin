@@ -295,7 +295,7 @@ class ArCoreView(val activity: Activity, context: Context, messenger: BinaryMess
         activity.application.registerActivityLifecycleCallbacks(this.activityLifecycleCallbacks)
     }
 
-    private fun onSingleTap(tap: MotionEvent?) {
+    private fun onSingleTap(tap: MotionEvent) {
         debugLog(" onSingleTap")
         val frame = arSceneView?.arFrame
         if (frame != null) {
@@ -378,7 +378,7 @@ class ArCoreView(val activity: Activity, context: Context, messenger: BinaryMess
         if (enableTapRecognizer != null && enableTapRecognizer) {
             arSceneView
                     ?.scene
-                    ?.setOnTouchListener { hitTestResult: HitTestResult, event: MotionEvent? ->
+                    ?.setOnTouchListener { hitTestResult: HitTestResult, event: MotionEvent ->
 
                         if (hitTestResult.node != null) {
                             debugLog(" onNodeTap " + hitTestResult.node?.name)
@@ -599,7 +599,7 @@ class ArCoreView(val activity: Activity, context: Context, messenger: BinaryMess
         }
     }
 
-    /* private fun tryPlaceNode(tap: MotionEvent?, frame: Frame) {
+    /* private fun tryPlaceNode(tap: MotionEvent, frame: Frame) {
         if (tap != null && frame.camera.trackingState == TrackingState.TRACKING) {
             for (hit in frame.hitTest(tap)) {
                 val trackable = hit.trackable
